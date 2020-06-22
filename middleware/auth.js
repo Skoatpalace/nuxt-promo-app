@@ -1,4 +1,4 @@
 export default function({ store, redirect }) {
     const isAuth = store.getters['auth/isAuthenticated']
-    if (!isAuth) redirect('/')
+    if (!isAuth) redirect('/notAuthenticated')
 }
