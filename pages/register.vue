@@ -160,9 +160,18 @@ export default {
       }
     }
   },
+  computed: {
+    isFormValid() {
+      return !this.$v.form.$invalid 
+    }
+  },
   methods: {
     register() {
-      console.log(this.form)
+      if(this.isFormValid) {
+        this.$store.dispatch('auth/register', this.form)
+          .then(_ => this.$router.push('/login'))
+          .catch(error => this.$toasted.error(error))
+      }
     }
   },
 }

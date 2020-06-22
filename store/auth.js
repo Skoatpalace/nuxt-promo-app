@@ -17,6 +17,16 @@ export const getters = {
 }
 
 export const actions = {
+    register(_, registerData) {
+        return this.$axios.$post('/api/v1/users/register', registerData)
+            .catch(error => {
+                let errorMessage = 'Uuups, something went wrong, try to register again!'
+                if (error.response.data.errors.message) {
+                    errorMessage = error.response.data.errors.message
+                }
+                return Promise.reject(errorMessage)
+            })
+    },
     login({ commit }, loginData) {
         return this.$axios.$post('/api/v1/users/login', loginData)
             .then(user => {
