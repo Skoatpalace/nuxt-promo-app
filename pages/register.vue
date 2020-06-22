@@ -120,6 +120,7 @@
 import { supportedFileType } from '@/helpers/validators'
 import { required, email, url, sameAs, minLength } from 'vuelidate/lib/validators'
 export default {
+  middleware: 'guest',
   data() {
     return {
       form: {
