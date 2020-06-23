@@ -1,9 +1,12 @@
 <template>
   <div class="instructor-page">
+    <instructor-header 
+      :title="'Choose your instructor page'"
+      :exitLink="'/'" />
     <div class="centered">
       <div class="columns">
         <!-- Go to /instructor/courses -->
-        <div class="box" @click="() => {}">
+        <div class="box" @click="() => $router.push('/instructor/courses')">
           <div>
             Courses
           </div>
@@ -26,8 +29,12 @@
 </template>
 
 <script>
+import InstructorHeader from '~/components/shared/Header'
 export default {
-    middleware: 'admin'
+    layout: 'instructor',
+    components: {
+      InstructorHeader,
+    },
 }
 </script>
 
